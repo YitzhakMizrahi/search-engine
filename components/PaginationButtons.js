@@ -1,31 +1,34 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ReactPaginate from 'react-paginate-next';
 
-function PaginationButtons() {
+function PaginationButtons({ results }) {
   const router = useRouter();
 
-  const startIndex = Number(router.query.start) || 0;
+  // const startIndex = Number(router.query.start) || 0;
+  const totalResults = Number(results.queries.nextPage[0].totalResults);
+
+  const handlePageClick = (data) => {
+    const selected = data.selected * 10;
+    router.push(`/search?term=${router.query.term}&start=${selected}`);
+  };
 
   return (
-    <div className="flex justify-between max-w-lg text-blue-700 mb-10">
-      {startIndex >= 10 && (
-        <Link
-          href={`/search?term=${router.query.term}&start=${startIndex - 10}`}
-        >
-          <div className="chevron">
-            <ChevronLeftIcon className="h-5" />
-            <p>Previous</p>
-          </div>
-        </Link>
-      )}
-
-      <Link href={`/search?term=${router.query.term}&start=${startIndex + 10}`}>
-        <div className="chevron">
-          <ChevronRightIcon className="h-5" />
-          <p>Next</p>
-        </div>
-      </Link>
+    <div className="flex justify-between max-w-lg text-blue-700 mt-10 mb-10">
+      <div className="chevron">
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={totalResults / 10}
+          marginPagesDisplayed={0}
+          pageRangeDisplayed={9}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
+      </div>
     </div>
   );
 }

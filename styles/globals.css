@@ -12,6 +12,22 @@
   }
 
   .chevron {
-    @apply flex flex-grow flex-col items-center cursor-pointer hover:underline;
+    @apply flex flex-grow flex-row items-center cursor-pointer text-[#4285f4];
+  }
+
+  .active {
+    @apply text-[rgba(0,0,0,.87)];
+  }
+
+  .chevron > ul {
+    @apply flex;
+  }
+
+  .pagination > li {
+    @apply flex pl-2 pr-2 md:pl-4 md:pr-3 hover:underline outline-none;
+  }
+
+  .chevron a {
+    @apply outline-none focus:outline-none active:outline-none;
   }
 }

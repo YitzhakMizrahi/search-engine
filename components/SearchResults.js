@@ -1,4 +1,4 @@
-import PaginationButtons from "./PaginationButtons";
+import PaginationButtons from './PaginationButtons';
 
 function SearchResults({ results }) {
   return (
@@ -24,7 +24,7 @@ function SearchResults({ results }) {
         </div>
       ))}
 
-      <PaginationButtons />
+      <PaginationButtons results={results} />
     </div>
   );
 }
