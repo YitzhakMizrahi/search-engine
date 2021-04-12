@@ -1,5 +1,7 @@
 import Response from '../../Response';
 import { API_KEY, CONTEXT_KEY, USE_DUMMY_DATA } from '../../keys';
+import nc from "next-connect";
+import cors from "cors";
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
