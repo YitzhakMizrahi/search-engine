@@ -6,7 +6,8 @@ module.exports = {
     return [
       {
         // matching all API routes
-        source: '/api/:search*',
+        source: "/api/:path*",
+        destination: 'https://ahttps://search-engine-khaki.vercel.app/:path*',
         headers: [
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
           { key: 'Access-Control-Allow-Origin', value: '*' },
