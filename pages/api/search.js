@@ -4,6 +4,7 @@ import { API_KEY, CONTEXT_KEY, USE_DUMMY_DATA } from '../../keys';
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
   const searchTerm = req.query;
   const useDummyData = USE_DUMMY_DATA;
 
