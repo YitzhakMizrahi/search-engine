@@ -21,7 +21,7 @@ export default function Home() {
     if (!searchTerm) return;
 
     const data = await fetch(
-      `http://localhost:3000/api/search?query=${searchTerm}`
+      `https://search-engine-m4lb0brw6-yitzhakmizrahi.vercel.app/api/search?query=${searchTerm}`
     )
       .then((response) => response.json())
       .catch((err) => console.log(err));
