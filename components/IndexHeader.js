@@ -1,11 +1,13 @@
 import { ViewGridIcon } from '@heroicons/react/solid';
 import Avatar from '../components/Avatar';
 
-function IndexHeader() {
+function IndexHeader({ className }) {
   return (
     <>
       {/* Header */}
-      <header className="flex w-full p-5 justify-between text-sm text-gray-700">
+      <header
+        className={`${className} flex w-full p-5 justify-between text-sm text-gray-700`}
+      >
         {/* Left */}
         <div className="flex space-x-4 items-center">
           <p className="link">About</p>

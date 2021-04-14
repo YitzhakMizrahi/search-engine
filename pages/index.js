@@ -8,12 +8,14 @@ import AutoSearchResults from '../components/AutoSearchResults';
 import SearchButtons from '../components//SearchButtons';
 import Footer from '../components/Footer';
 import { USE_DUMMY_DATA } from '../keys';
+import useWindowSize from '../utils/useWindowSize';
 
 export default function Home() {
   const [results, setResults] = useState({});
   const [input, setInput] = useState(null);
   const searchInputRef = useRef(null);
   const router = useRouter();
+  const size = useWindowSize();
 
   const autoSearch = async (e) => {
     const searchTerm = searchInputRef.current.value;
@@ -52,23 +54,31 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <IndexHeader />
+      <IndexHeader className={size.width <= 414 && `mt-2`} />
 
       {/* Body */}
-      <form className="flex flex-col items-center mt-44 flex-grow w-4/5">
+      <form
+        className={`flex flex-col items-center ${
+          size.width <= 414 ? `mt-20` : `mt-44`
+        } flex-grow w-4/5`}
+      >
         <Image
           src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-          height={100}
-          width={300}
+          height={size.width <= 414 ? 50 : 100}
+          width={size.width <= 414 ? 150 : 300}
         />
-        {input ? (
+        {input && size.width > 414 ? (
           <>
             <SearchInput
               searchInputRef={searchInputRef}
               autoSearch={autoSearch}
               className={'rounded-3xl rounded-b-none'}
             />
-            <AutoSearchResults input={input} results={results} search={search} />
+            <AutoSearchResults
+              input={input}
+              results={results}
+              search={search}
+            />
           </>
         ) : (
           <>
