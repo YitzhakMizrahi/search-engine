@@ -54,13 +54,13 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <IndexHeader className={size.width <= 414 && `mt-2`} />
+      <IndexHeader className={size.width <= 414 && `mt-1`} />
 
       {/* Body */}
       <form
-        className={`flex flex-col items-center ${
+        className={`flex flex-col items-center flex-grow w-4/5 ${
           size.width <= 414 ? `mt-20` : `mt-44`
-        } flex-grow w-4/5`}
+        } `}
       >
         <Image
           src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
