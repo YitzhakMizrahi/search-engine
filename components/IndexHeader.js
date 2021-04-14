@@ -1,12 +1,14 @@
 import { ViewGridIcon } from '@heroicons/react/solid';
 import Avatar from '../components/Avatar';
 
-function IndexHeader({ className }) {
+function IndexHeader({ screenSizeWidth }) {
   return (
     <>
       {/* Header */}
       <header
-        className={`${className} flex w-full p-5 justify-between text-sm text-gray-700`}
+        className={`${
+          screenSizeWidth <= 414 && `mt-1`
+        } flex w-full p-5 justify-between text-sm text-gray-700`}
       >
         {/* Left */}
         <div className="flex space-x-4 items-center">

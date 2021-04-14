@@ -54,20 +54,20 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <IndexHeader className={size.width <= 414 && `mt-1`} />
+      <IndexHeader screenSizeWidth={size.width} />
 
       {/* Body */}
       <form
         className={`flex flex-col items-center flex-grow w-4/5 ${
           size.width <= 414 ? `mt-20` : `mt-44`
-        } `}
+        }`}
       >
         <Image
           src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-          height={size.width <= 414 ? 50 : 100}
-          width={size.width <= 414 ? 150 : 300}
+          height={100}
+          width={300}
         />
-        {input && size.width > 414 ? (
+        {input && size.width > 414 && size.height > 736 ? (
           <>
             <SearchInput
               searchInputRef={searchInputRef}
