@@ -16,7 +16,7 @@ export default function Home() {
 
   const autoSearch = async (e) => {
     const searchTerm = searchInputRef.current.value;
-
+  
     setInput(searchTerm);
 
     if (!searchTerm) return;

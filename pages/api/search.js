@@ -28,7 +28,7 @@ async function handler(req, res) {
   await runMiddleware(req, res, cors);
 
   // Rest of the API logic
-  const searchTerm = req.query;
+  const searchTerm = req.query.query;
   const useDummyData = USE_DUMMY_DATA;
 
   if (!searchTerm) return;
