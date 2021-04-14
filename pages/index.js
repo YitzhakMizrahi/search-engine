@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { DebounceInput } from 'react-debounce-input';
 import { MicrophoneIcon, ViewGridIcon, XIcon } from '@heroicons/react/solid';
-import { SearchIcon } from '@heroicons/react/outline';
+import { SearchIcon, ClockIcon } from '@heroicons/react/outline';
 import Avatar from '../components/Avatar';
 import Footer from '../components/Footer';
 
@@ -16,13 +16,13 @@ export default function Home() {
 
   const autoSearch = async (e) => {
     const searchTerm = searchInputRef.current.value;
-  
+
     setInput(searchTerm);
 
     if (!searchTerm) return;
 
     const data = await fetch(
-      `https://search-engine-yitzhakmizrahi.vercel.app/api/search?query=${searchTerm}`
+      `https://search-engine-khaki.vercel.app/api/search?query=${searchTerm}`
     )
       .then((response) => response.json())
       .catch((err) => console.log(err));
@@ -85,20 +85,13 @@ export default function Home() {
                 type="text"
                 className="flex-grow focus:outline-none"
               />
-              <XIcon
-                className="h-7 sm:mr-3 text-gray-500 cursor-pointer transition duration-100 transform hover:scale-125"
-                onClick={() => {
-                  setInput(null);
-                  searchInputRef.current.value = '';
-                }}
-              />
               <MicrophoneIcon className="h-5 text-gray-500" />
             </div>
             <div className="w-full rounded-3xl focus-within:shadow-lg rounded-t-none border border-gray-200 px-5 py-3 max-w-md shadow-lg sm:max-w-xl lg:max-w-2xl items-center">
               {results.data?.items?.map((result) => (
                 <div key={result.link} className="mb-5 hover:bg-gray-50">
                   <div className="group flex items-center">
-                    <SearchIcon className="h-4 mr-2" />
+                    <ClockIcon className="h-5 mr-2" />
                     <a
                       onClick={() =>
                         router.push(`/search?term=${result.title}`)
