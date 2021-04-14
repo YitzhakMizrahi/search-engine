@@ -2,8 +2,9 @@ import { useRef, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { DebounceInput } from 'react-debounce-input';
 import { MicrophoneIcon, ViewGridIcon, XIcon } from '@heroicons/react/solid';
-import { SearchIcon, ClockIcon } from '@heroicons/react/outline';
+import { SearchIcon } from '@heroicons/react/outline';
 import Avatar from '../components/Avatar';
 import Footer from '../components/Footer';
 
@@ -15,7 +16,7 @@ export default function Home() {
 
   const autoSearch = async (e) => {
     const searchTerm = searchInputRef.current.value;
-    
+
     setInput(searchTerm);
 
     if (!searchTerm) return;
@@ -76,8 +77,10 @@ export default function Home() {
           <>
             <div className="flex w-full mt-5  max-w-md rounded-3xl rounded-b-none border border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl">
               <SearchIcon className="h-5 mr-3 text-gray-500" />
-              <input
-                ref={searchInputRef}
+              <DebounceInput
+                minLength={1}
+                debounceTimeout={400}
+                inputRef={searchInputRef}
                 onChange={autoSearch}
                 type="text"
                 className="flex-grow focus:outline-none"
@@ -95,7 +98,7 @@ export default function Home() {
               {results.data?.items?.map((result) => (
                 <div key={result.link} className="mb-5 hover:bg-gray-50">
                   <div className="group flex items-center">
-                    <ClockIcon className="h-5 mr-2" />
+                    <SearchIcon className="h-4 mr-2" />
                     <a
                       onClick={() =>
                         router.push(`/search?term=${result.title}`)
@@ -120,8 +123,10 @@ export default function Home() {
           <>
             <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow-lg max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl">
               <SearchIcon className="h-5 mr-3 text-gray-500" />
-              <input
-                ref={searchInputRef}
+              <DebounceInput
+                minLength={1}
+                debounceTimeout={400}
+                inputRef={searchInputRef}
                 onChange={autoSearch}
                 type="text"
                 className="flex-grow focus:outline-none"
