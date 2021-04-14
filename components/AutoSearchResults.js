@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
+import Highlighter from 'react-highlight-words';
 import { SearchIcon } from '@heroicons/react/outline';
 import SearchButtons from './SearchButtons';
 
-function AutoSearchResults({ results, search }) {
+function AutoSearchResults({ results, search, input }) {
   const router = useRouter();
 
   return (
@@ -12,7 +13,16 @@ function AutoSearchResults({ results, search }) {
           <div className="group flex items-center">
             <SearchIcon className="h-4 mr-2" />
             <a onClick={() => router.push(`/search?term=${result.title}`)}>
-              <h2 className="">{result.title}</h2>
+              <Highlighter
+                highlightStyle={{
+                  fontWeight: 'bold',
+                  backgroundColor: 'transparent',
+                  wordBreak: 'break-word',
+                }}
+                searchWords={[input]}
+                autoEscape={true}
+                textToHighlight={result.title}
+              />
             </a>
           </div>
         </div>

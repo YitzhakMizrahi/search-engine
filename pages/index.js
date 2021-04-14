@@ -68,7 +68,7 @@ export default function Home() {
               autoSearch={autoSearch}
               className={'rounded-3xl rounded-b-none'}
             />
-            <AutoSearchResults results={results} search={search} />
+            <AutoSearchResults input={input} results={results} search={search} />
           </>
         ) : (
           <>
