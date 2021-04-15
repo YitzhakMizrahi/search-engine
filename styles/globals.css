@@ -39,6 +39,14 @@
     @apply w-[100%];
   }
 
+  .mobile {
+    @apply hidden;
+  }
+
+  .desktop {
+    @apply visible;
+  }
+
   @media (max-width: 550px) {
     .logo {
       @apply w-[60%] max-w-[300px] mb-[1.5rem];
