@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SearchResults from '../components/SearchResults';
 import { API_KEY, CONTEXT_KEY, USE_DUMMY_DATA } from '../keys';
@@ -17,6 +18,7 @@ function Search({ results }) {
 
       <Header />
       <SearchResults results={results} />
+      <Footer />
     </div>
   );
 }

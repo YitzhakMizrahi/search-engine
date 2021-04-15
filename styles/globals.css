@@ -12,7 +12,7 @@
   }
 
   .chevron {
-    @apply flex flex-grow flex-row items-center cursor-pointer text-[#4285f4];
+    @apply flex flex-grow flex-row justify-center items-center cursor-pointer text-[#4285f4];
   }
 
   .active {
@@ -24,7 +24,7 @@
   }
 
   .pagination > li {
-    @apply flex pl-2 pr-2 md:pl-4 md:pr-3 hover:underline outline-none;
+    @apply flex pl-2 pr-2 md:pl-2 md:pr-2 hover:underline outline-none;
   }
 
   .chevron a {
