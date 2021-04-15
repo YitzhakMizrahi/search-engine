@@ -12,7 +12,7 @@ function AutoSearchResults({ results, search, input }) {
         <div key={result.link} className="mb-5 hover:bg-gray-50">
           <div className="group flex items-center">
             <SearchIcon className="h-4 mr-2" />
-            <a onClick={() => router.push(`/search?term=${result.title}`)}>
+            <a onMouseDown={() => router.push(`/search?term=${result.title}`)}>
               <Highlighter
                 highlightStyle={{
                   fontWeight: 'bold',

@@ -2,13 +2,21 @@ import { DebounceInput } from 'react-debounce-input';
 import { SearchIcon } from '@heroicons/react/outline';
 import { MicrophoneIcon } from '@heroicons/react/solid';
 
-function SearchInput({ searchInputRef, autoSearch, className }) {
+function SearchInput({
+  searchInputRef,
+  autoSearch,
+  className,
+  onBlur,
+  onFocus,
+}) {
   return (
     <div
       className={`${className} flex w-full mt-5 max-w-md border border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl `}
     >
       <SearchIcon className="h-5 mr-3 text-gray-500" />
       <DebounceInput
+        onBlur={onBlur}
+        onFocus={onFocus}
         minLength={1}
         debounceTimeout={400}
         inputRef={searchInputRef}

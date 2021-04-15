@@ -15,6 +15,7 @@ export default function Home() {
   const searchInputRef = useRef(null);
   const router = useRouter();
   const size = useWindowSize();
+  const [hasFocus, setFocus] = useState(false);
 
   const autoSearch = async (e) => {
     const searchTerm = searchInputRef.current.value;
@@ -28,7 +29,7 @@ export default function Home() {
     //   ? 'http://localhost:3000'
     //   : 'https://search-engine-khaki.vercel.app';
 
-    const url = 'https://search-engine-khaki.vercel.app'
+    const url = 'https://search-engine-khaki.vercel.app';
 
     const data = await fetch(`${url}/api/search?query=${searchTerm}`)
       .then((response) => response.json())
@@ -68,12 +69,14 @@ export default function Home() {
         </div>
 
         {/* Render AutoSearchResults on desktop view and only when there is an input */}
-        {input && size.width > 414 && size.height > 736 ? (
+        {input && size.width > 414 && size.height > 736 && hasFocus ? (
           <>
             <SearchInput
               searchInputRef={searchInputRef}
               autoSearch={autoSearch}
               className={'rounded-3xl rounded-b-none'}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
             />
             <AutoSearchResults
               input={input}
@@ -87,6 +90,8 @@ export default function Home() {
               searchInputRef={searchInputRef}
               autoSearch={autoSearch}
               className={'rounded-full hover:shadow-lg focus-within:shadow-lg'}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
             />
             <SearchButtons search={search} width={'w-1/2'} />
           </>
