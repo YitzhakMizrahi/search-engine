@@ -30,4 +30,18 @@
   .chevron a {
     @apply outline-none focus:outline-none active:outline-none;
   }
+
+  .logo {
+    @apply w-[90%] max-w-[300px] mb-[3rem];
+  }
+
+  .logo img {
+    @apply w-[100%];
+  }
+
+  @media (max-width: 550px) {
+    .logo {
+      @apply w-[60%] max-w-[300px] mb-[1.5rem];
+    }
+  }
 }

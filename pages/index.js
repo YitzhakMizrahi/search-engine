@@ -62,11 +62,9 @@ export default function Home() {
           size.width <= 414 ? `mt-20` : `mt-44`
         }`}
       >
-        <Image
-          src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-          height={100}
-          width={300}
-        />
+        <div className="logo">
+          <img src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" />
+        </div>
         {input && size.width > 414 && size.height > 736 ? (
           <>
             <SearchInput
