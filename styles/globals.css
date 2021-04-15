@@ -43,5 +43,9 @@
     .logo {
       @apply w-[60%] max-w-[300px] mb-[1.5rem];
     }
+
+    footer div:not(.fright) > p {
+      @apply hidden;
+    }
   }
 }
