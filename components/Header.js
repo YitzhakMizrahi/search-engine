@@ -1,24 +1,24 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { MicrophoneIcon, XIcon } from '@heroicons/react/solid';
-import { SearchIcon } from '@heroicons/react/outline';
 import Avatar from './Avatar';
 import HeaderOptions from './HeaderOptions';
+import HeaderSearchFormDesktop from './HeaderSearchFormDesktop';
+import HeaderSearchFormMobile from './HeaderSearchFormMobile';
 import useWindowSize from '../utils/useWindowSize';
 
 function Header() {
-  const router = useRouter();
   const searchInputRef = useRef(null);
+  const router = useRouter();
   const size = useWindowSize();
 
   const search = (e) => {
     e.preventDefault();
-    const term = searchInputRef.current.value;
+    const searchTerm = searchInputRef.current.value;
 
-    if (!term) return;
+    if (!searchTerm) return;
 
-    router.push(`/search?term=${term}`);
+    router.push(`/search?term=${searchTerm}`);
   };
 
   return (
@@ -36,27 +36,19 @@ function Header() {
             onClick={() => router.push('/')}
             className="cursor-pointer"
           />
-          <form
-            className={`${
-              size.width <= 550 ? `hidden` : `flex`
-            } flex-grow px-6 py-3 ml-10 mr-5 border border-gray-200 rounded-full shadow-lg max-w-3xl items-center`}
-          >
-            <input
-              ref={searchInputRef}
-              className="flex-grow w-full focus:outline-none"
-              defaultValue={router.query.term}
-              type="text"
-            />
-            <XIcon
-              className="h-7 sm:mr-3 text-gray-500 cursor-pointer transition duration-100 transform hover:scale-125"
-              onClick={() => (searchInputRef.current.value = '')}
-            />
-            <MicrophoneIcon className="mr-3 h-6 hidden sm:inline-flex text-blue-500 border-l-2 pl-4 border-gray-300" />
-            <SearchIcon className="h-6 text-blue-500 hidden sm:inline-flex" />
-            <button hidden type="submit" onClick={search}>
-              Search
-            </button>
-          </form>
+
+          {/* Desktop view */}
+          {size.width > 550 && (
+            <>
+              <HeaderSearchFormDesktop
+                searchInputRef={searchInputRef}
+                defaultValue={router.query.term}
+                clearSearch={() => (searchInputRef.current.value = '')}
+                search={search}
+              />
+            </>
+          )}
+
           <Avatar
             className="ml-auto"
             url="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png"
@@ -66,27 +58,18 @@ function Header() {
           className={`${size.width <= 550 ? `hidden` : `flex`} `}
         />
 
-        <form
-          className={`${
-            size.width <= 550 ? `flex` : `hidden`
-          } flex-grow px-6 py-3 ml-4 mr-4 mb-5 border border-gray-200 rounded-full shadow-lg max-w-3xl items-center`}
-        >
-          <SearchIcon className="h-5 mr-3 text-gray-500" />
-          <input
-            ref={searchInputRef}
-            className="flex-grow w-full focus:outline-none"
-            defaultValue={router.query.term}
-            type="text"
-          />
-          <XIcon
-            className="h-7 sm:mr-3 text-gray-500 cursor-pointer transition duration-100 transform hover:scale-125"
-            onClick={() => (searchInputRef.current.value = '')}
-          />
-          <button hidden type="submit" onClick={search}>
-            Search
-          </button>
-        </form>
-        <HeaderOptions className={`${size.width <= 550 ? `flex` : `hidden`}`} />
+        {/* Mobile view */}
+        {size.width <= 550 && (
+          <>
+            <HeaderSearchFormMobile
+              searchInputRef={searchInputRef}
+              defaultValue={router.query.term}
+              clearSearch={() => (searchInputRef.current.value = '')}
+              search={search}
+            />
+            <HeaderOptions />
+          </>
+        )}
       </header>
     </>
   );

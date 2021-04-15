@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import IndexHeader from '../components/IndexHeader';
 import SearchInput from '../components/SearchInput';
 import AutoSearchResults from '../components/AutoSearchResults';
