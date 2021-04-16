@@ -1,6 +1,6 @@
 function PaginationGoogleIndicator({ pageNumber }) {
   return (
-    <div className="w-full flex max-w-lg justify-center text-4xl font-semibold mt-[3rem]">
+    <div className="w-full flex max-w-lg justify-center ml-[0.5rem] sm:ml-0 text-[2.3rem] sm:text-4xl font-semibold mt-[3rem]">
       <span className="text-blue-500">G</span>
       <span
         className={`${pageNumber === 0 ? 'text-red-500' : 'text-yellow-300'}`}

@@ -13,6 +13,7 @@ function PaginationButtons({ results }) {
   const handlePageClick = (data) => {
     const selected = data.selected * 10;
     setpageNumber(selected);
+    console.log(pageNumber);
     router.push(`/search?term=${router.query.term}&start=${selected}`);
   };
 
@@ -20,10 +21,16 @@ function PaginationButtons({ results }) {
     <>
       <PaginationGoogleIndicator pageNumber={pageNumber / 10} />
 
-      <div className="flex justify-center max-w-lg text-blue-700 mt-[1.5rem] mb-[3rem]">
+      <div
+        className={`flex justify-center max-w-lg text-blue-700 ${
+          pageNumber === null || pageNumber === 0
+            ? 'ml-[1.5rem] sm:ml-[0.3rem]'
+            : 'ml-[-2rem] sm:ml-[-1.5rem]'
+        }  mt-[0.5rem] mb-[3rem]`}
+      >
         <div className="chevron">
           <ReactPaginate
-            previousLabel={'Previous'}
+            previousLabel={pageNumber > 0 && 'Previous'}
             nextLabel={'Next'}
             breakLabel={'...'}
             breakClassName={'break-me'}
