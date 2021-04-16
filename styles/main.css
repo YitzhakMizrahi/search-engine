@@ -40,12 +40,7 @@
 --white: #381967;
 } */
 
-*, *::before, *::after, *::placeholder {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-transition: all 0.2s;
-}
+
 svg {
 transition: fill -0.2s;
 }
@@ -59,7 +54,7 @@ font-family: "Product Sans", sans-serif;
 color: var(--bk1);
 -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
 width: 0.9rem;
 background: transparent;
 }
@@ -74,13 +69,6 @@ border-radius: 0.5rem;
 
 ::-webkit-scrollbar-button { width: 0; height: 0; display: none; }
 ::-webkit-scrollbar-corner { background-color: transparent; }
-::-webkit-scrollbar-thumb:hover { background: var(--gr1); }
+::-webkit-scrollbar-thumb:hover { background: var(--gr1); } */
 
-a {
-text-decoration: none;
-color: var(--b2);
-}
-a:hover {
-color: var(--b3);
-}
 
