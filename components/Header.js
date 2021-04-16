@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { SearchIcon } from '@heroicons/react/outline';
+import { MicrophoneIcon } from '@heroicons/react/solid';
 import Avatar from './Avatar';
 import HeaderOptions from './HeaderOptions';
-import HeaderSearchFormDesktop from './HeaderSearchFormDesktop';
-import HeaderSearchFormMobile from './HeaderSearchFormMobile';
 import useWindowSize from '../utils/useWindowSize';
+import HeaderSearchForm from './HeaderSearchForm';
 
 function Header() {
   const searchInputRef = useRef(null);
@@ -40,7 +41,15 @@ function Header() {
           {/* Desktop view */}
           {size.width > 550 && (
             <>
-              <HeaderSearchFormDesktop
+              <HeaderSearchForm
+                margin={`ml-10 mr-5`}
+                microphoneIcon={
+                  <MicrophoneIcon className="mr-3 h-6 hidden sm:inline-flex text-blue-500 border-l-2 pl-4 border-gray-300" />
+                }
+                searchIconMobile={null}
+                searchIconDesktop={
+                  <SearchIcon className="h-6 text-blue-500 hidden sm:inline-flex" />
+                }
                 searchInputRef={searchInputRef}
                 defaultValue={router.query.term}
                 clearSearch={() => (searchInputRef.current.value = '')}
@@ -61,7 +70,13 @@ function Header() {
         {/* Mobile view */}
         {size.width <= 550 && (
           <>
-            <HeaderSearchFormMobile
+            <HeaderSearchForm
+              margin={`ml-4 mr-4 mb-5`}
+              microphoneIcon={null}
+              searchIconMobile={
+                <SearchIcon className="h-5 mr-3 text-gray-500" />
+              }
+              searchIconDesktop={null}
               searchInputRef={searchInputRef}
               defaultValue={router.query.term}
               clearSearch={() => (searchInputRef.current.value = '')}

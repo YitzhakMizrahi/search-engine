@@ -1,7 +1,10 @@
 import { XIcon } from '@heroicons/react/solid';
-import { SearchIcon } from '@heroicons/react/outline';
 
-function HeaderSearchFormMobile({
+function HeaderSearchForm({
+  margin,
+  microphoneIcon,
+  searchIconMobile,
+  searchIconDesktop,
   searchInputRef,
   handleChange,
   defaultValue,
@@ -11,9 +14,9 @@ function HeaderSearchFormMobile({
   return (
     <>
       <form
-        className={`flex flex-grow px-6 py-3 ml-4 mr-4 mb-5 border border-gray-200 rounded-full shadow-lg max-w-3xl items-center`}
+        className={`flex flex-grow px-6 py-3 ${margin} border border-gray-200 rounded-full shadow-lg max-w-3xl items-center`}
       >
-        <SearchIcon className="h-5 mr-3 text-gray-500" />
+        {searchIconMobile}
         <input
           ref={searchInputRef}
           onChange={handleChange}
@@ -25,6 +28,8 @@ function HeaderSearchFormMobile({
           className="h-7 sm:mr-3 text-gray-500 cursor-pointer transition duration-100 transform hover:scale-125"
           onClick={clearSearch}
         />
+        {microphoneIcon}
+        {searchIconDesktop}
         <button hidden type="submit" onClick={search}>
           Search
         </button>
@@ -33,4 +38,4 @@ function HeaderSearchFormMobile({
   );
 }
 
-export default HeaderSearchFormMobile;
+export default HeaderSearchForm;
