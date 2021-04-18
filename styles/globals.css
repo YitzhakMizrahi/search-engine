@@ -24,7 +24,7 @@
   }
 
   .pagination > li {
-    @apply flex pl-2 pr-2 md:pl-2 md:pr-2 hover:underline outline-none;
+    @apply flex pl-[0.41rem] pr-[0.41rem] hover:underline outline-none;
   }
 
   .chevron a {

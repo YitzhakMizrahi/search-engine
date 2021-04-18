@@ -23,16 +23,16 @@ function PaginationGoogleIndicator({ pageNumber }) {
         o
       </span>
       <span
-        className={`${pageNumber === 4 ? 'text-red-500' : 'text-yellow-300'}`}
+        className={`${
+          pageNumber === 4 || pageNumber >= 10
+            ? 'text-red-500'
+            : 'text-yellow-300'
+        }`}
       >
         o
       </span>
       <span
-        className={`${
-          pageNumber === 5 || pageNumber >= 10
-            ? 'text-red-500'
-            : 'text-yellow-300'
-        }`}
+        className={`${pageNumber === 5 ? 'text-red-500' : 'text-yellow-300'}`}
       >
         o
       </span>
@@ -48,11 +48,6 @@ function PaginationGoogleIndicator({ pageNumber }) {
       </span>
       <span
         className={`${pageNumber === 8 ? 'text-red-500' : 'text-yellow-300'}`}
-      >
-        o
-      </span>
-      <span
-        className={`${pageNumber === 9 ? 'text-red-500' : 'text-yellow-300'}`}
       >
         o
       </span>

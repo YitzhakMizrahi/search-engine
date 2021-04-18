@@ -17,14 +17,16 @@ function PaginationButtons({ results }) {
     router.push(`/search?term=${router.query.term}&start=${selected}`);
   };
 
+  // real page count is
+  // const pageCount = totalResults / 10
+  // ${pageNumber >= 70 ? 'text-[0.7rem] ml-[-0.10rem] sm:ml-[-0.10rem]' : 'text-md'}
+
   return (
     <>
       <PaginationGoogleIndicator pageNumber={pageNumber / 10} />
 
       <div
-        className={`flex justify-center max-w-lg text-blue-700 mt-[1rem] mt-[0.5rem] mb-[3rem] ${
-          pageNumber >= 70 ? 'text-sm ml-[-0.10rem] sm:ml-[-0.10rem]' : 'text-md'
-        } ${
+        className={`flex justify-center max-w-lg text-blue-700 mt-[0.5rem] mb-[3rem] ${
           pageNumber === null || pageNumber === 0
             ? 'ml-[-0.55rem] sm:ml-[-0.25rem]'
             : 'ml-[-1.5rem] sm:ml-[-0.8rem]'
@@ -38,7 +40,7 @@ function PaginationButtons({ results }) {
             nextLabel={<ChevronRightIcon className="mt-[0.35rem] h-4" />}
             breakLabel={''}
             breakClassName={'break-me'}
-            pageCount={totalResults / 10}
+            pageCount={9}
             marginPagesDisplayed={0}
             pageRangeDisplayed={9}
             onPageChange={handlePageClick}

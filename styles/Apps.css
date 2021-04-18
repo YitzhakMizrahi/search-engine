@@ -4,7 +4,7 @@ align-items: center;
 position: relative;
 }
 .appsToggle {
-pointer: cursor;
+cursor: pointer;
 }
 .appsToggle.open svg {
 fill: currentColor;
