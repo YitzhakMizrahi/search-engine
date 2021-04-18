@@ -25,7 +25,7 @@ pointer-events: none !important;
 .apps__list {
 position: absolute;
 top: calc(100% + 1rem);
-left: -600%;
+left: -400%;
 background: white;
 box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
 padding: 0.5rem;
@@ -72,8 +72,9 @@ box-shadow: inset 0 0.25rem 0.25rem rgba(0,0,0,0.05);
 @media (max-width: 550px) {
 .apps__list {
 left: auto;
-min-width: 250px;
-right: -0.5rem;
+margin-top: 0.5rem;
+min-width: 22rem;
+right: -4rem;
 padding: 0.5rem;
 max-height: calc(100vh - 9rem);
 transform: translateY(-1rem);
