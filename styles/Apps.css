@@ -74,8 +74,8 @@
   .apps__list {
     left: auto;
     margin-top: 0.5rem;
-    min-width: 20rem;
-    right: -4rem;
+    min-width: 18rem;
+    right: -3rem;
     padding: 0.5rem;
     max-height: calc(100vh - 9rem);
     transform: translateY(-1rem);
@@ -84,7 +84,7 @@
     transform: translateY(0);
   }
   .apps__list a img {
-    width: 60%;
+    width: 2.5rem;
   }
   .apps__list a span {
     font-size: 0.85rem;
