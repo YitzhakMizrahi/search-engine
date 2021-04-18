@@ -25,11 +25,11 @@ export default function Home() {
 
     if (!searchTerm) return;
 
-    // const url = USE_DUMMY_DATA
-    //   ? 'http://localhost:3000'
-    //   : 'https://search-engine-khaki.vercel.app';
+    const url = USE_DUMMY_DATA
+      ? 'http://localhost:3000'
+      : 'https://search-engine-khaki.vercel.app';
 
-    const url = 'https://search-engine-khaki.vercel.app';
+    // const url = 'https://search-engine-khaki.vercel.app';
 
     const data = await fetch(`${url}/api/search?query=${searchTerm}`)
       .then((response) => response.json())
