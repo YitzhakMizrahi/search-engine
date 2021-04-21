@@ -1,5 +1,5 @@
 import { ViewGridIcon } from '@heroicons/react/outline';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const Apps = () => {
   const appsList = useRef(null);

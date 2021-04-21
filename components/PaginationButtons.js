@@ -30,14 +30,18 @@ function PaginationButtons({ results }) {
           pageNumber === null || pageNumber === 0
             ? 'ml-[-0.55rem] sm:ml-[-0.25rem]'
             : 'ml-[-1.5rem] sm:ml-[-0.8rem]'
-        }  `}
+        } ${pageNumber >= 80 && 'ml-[-2.55rem] sm:ml-[-0.25rem]'} `}
       >
         <div className="chevron ">
           <ReactPaginate
             previousLabel={
               pageNumber > 0 && <ChevronLeftIcon className="mt-[0.35rem] h-4" />
             }
-            nextLabel={<ChevronRightIcon className="mt-[0.35rem] h-4" />}
+            nextLabel={
+              pageNumber <= 70 && (
+                <ChevronRightIcon className="mt-[0.35rem] h-4" />
+              )
+            }
             breakLabel={''}
             breakClassName={'break-me'}
             pageCount={9}
