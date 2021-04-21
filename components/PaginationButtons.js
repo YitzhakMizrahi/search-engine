@@ -30,7 +30,7 @@ function PaginationButtons({ results }) {
           pageNumber === null || pageNumber === 0
             ? 'ml-[-0.55rem] sm:ml-[-0.25rem]'
             : 'ml-[-1.5rem] sm:ml-[-0.8rem]'
-        } ${pageNumber >= 80 && 'ml-[-2.55rem] sm:ml-[-0.25rem]'} `}
+        } ${pageNumber >= 80 && 'ml-[-2.55rem] sm:ml-[-1.30rem]'} `}
       >
         <div className="chevron ">
           <ReactPaginate
