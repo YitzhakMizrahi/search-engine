@@ -67,9 +67,9 @@ export default function Home() {
         <div className="logo">
           <img src="https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" />
         </div>
-
+        {/*  */}
         {/* Render AutoSearchResults on desktop view and only when there is an input */}
-        {input && size.width > 414 && size.height > 736 && hasFocus ? (
+        {input && size.width > 414 && size.height > 1095 && hasFocus ? (
           <>
             <SearchInput
               searchInputRef={searchInputRef}

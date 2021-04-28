@@ -6,13 +6,13 @@ import PaginationGoogleIndicator from './PaginationGoogleIndicator';
 
 function PaginationButtons({ results }) {
   const router = useRouter();
-  const [pageNumber, setpageNumber] = useState(null);
+  const [pageNumber, setPageNumber] = useState(null);
 
   const totalResults = Number(results.queries.nextPage[0].totalResults);
 
   const handlePageClick = (data) => {
     const selected = data.selected * 10;
-    setpageNumber(selected);
+    setPageNumber(selected);
     console.log(pageNumber);
     router.push(`/search?term=${router.query.term}&start=${selected}`);
   };

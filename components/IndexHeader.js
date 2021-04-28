@@ -1,6 +1,5 @@
-import { ViewGridIcon } from '@heroicons/react/solid';
 import Avatar from '../components/Avatar';
-import Apps from '../components/Apps'
+import Apps from '../components/Apps';
 
 function IndexHeader({ screenSizeWidth }) {
   return (
@@ -22,9 +21,7 @@ function IndexHeader({ screenSizeWidth }) {
           <p className="link">Gmail</p>
           <p className="link">Images</p>
 
-          {/* Icon */}
           <Apps />
-          {/* <ViewGridIcon className="h-10 w-10 p-2 rounded-full hover:bg-gray-100 cursor-pointer" /> */}
 
           <Avatar url="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png" />
         </div>
