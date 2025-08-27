@@ -1,34 +1,174 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Google Search Clone (Next.js + Tailwind CSS)
+
+A responsive, production-style clone of Google Search that demonstrates SSR data fetching, API routing, debounced autocomplete, pagination, and UI polish with Tailwind CSS. This project is ideal for portfolio presentation and clearly showcases full‑stack web skills with modern React and Next.js.
+
+### Goals and Learning Objectives
+
+- Build a realistic search UI with mobile/desktop layouts
+- Integrate a third‑party API (Google Custom Search JSON API)
+- Implement server‑side rendering for better SEO and performance
+- Add debounced autocomplete with highlighted query terms
+- Create accessible, responsive components and pagination
+
+### Skills Demonstrated
+
+- Next.js (Pages Router), SSR via `getServerSideProps`
+- React 17 component composition and hooks
+- API routes and middleware (CORS)
+- Tailwind CSS 2 utility‑first styling
+- Debounced inputs, highlighting, pagination UX
+- Environment configuration and local/prod switches
+
+### Tech Stack
+
+- Next.js 10, React 17
+- Tailwind CSS 2, PostCSS, Autoprefixer
+- Heroicons React
+- `react-debounce-input`, `react-highlight-words`, `react-paginate-next`
+
+---
+
+## Features
+
+- Autocomplete suggestions with debounce (400ms) and highlighted matches
+- Search results page with SSR (faster TTFB and SEO‑friendly)
+- Google‑style pagination bar with arrows and page state
+- Responsive header with different layouts for mobile/desktop
+- Reusable components: `Header`, `IndexHeader`, `SearchInput`, `AutoSearchResults`, `SearchResults`, `PaginationButtons`
+- Local dummy data toggle for development
+
+---
+
+## Architecture Overview
+
+- `pages/index.js`: Landing page with search box and autocomplete
+- `pages/search.js`: SSR results page fetching from Google Custom Search API
+- `pages/api/search.js`: API route with CORS for autocomplete
+- `components/*`: UI building blocks (headers, inputs, results, pagination)
+- `utils/useWindowSize.js`: Custom hook for responsive logic
+- `Response.js`: Local sample data used when dummy mode is enabled
+- `keys.js`: Env var mapping and dummy‑data flag
+
+Image domains configured via `next.config.js`.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js >= 14 and Yarn or npm
+- Google Custom Search JSON API credentials:
+  1. Create an API key (`API_KEY`): Google Cloud Console → APIs & Services
+  2. Create a Custom Search Engine (`CONTEXT_KEY`): `https://cse.google.com/cse/create/new`
+
+### Environment Variables
+
+Create a `.env.local` file in the project root:
 
 ```bash
-npm run dev
-# or
-yarn dev
+# .env.local
+API_KEY=your_google_api_key
+CONTEXT_KEY=your_custom_search_engine_id
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure these match the variables referenced in `keys.js`.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Dummy Data Toggle
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+For development without API calls, toggle the flag in `keys.js`:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```js
+// keys.js
+export const USE_DUMMY_DATA = true; // set to false for real API calls
+```
 
-## Learn More
+### Install and Run
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# install
+yarn
+# or
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# start dev server
+yarn dev
+# or
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# build and start
+yarn build && yarn start
+# or
+npm run build && npm start
+```
 
-## Deploy on Vercel
+Visit `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deployment
+
+This app is optimized for deployment on Vercel.
+
+1. Set environment variables `API_KEY` and `CONTEXT_KEY` in your hosting provider
+2. Build and deploy
+
+With Vercel: connect the repo, add env vars, and deploy from the dashboard or CLI.
+
+---
+
+## Notable Implementation Details
+
+- Server‑side fetching in `pages/search.js` using `getServerSideProps`
+- API route `pages/api/search.js` proxies Google API and enables CORS (GET/HEAD/POST/OPTIONS)
+- Debounced input with `react-debounce-input` to limit network traffic
+- Query text highlighting in autocomplete results with `react-highlight-words`
+- Pagination via `react-paginate-next` and a custom Google‑style indicator
+- Tailwind CSS component classes defined in `styles/globals.css` and custom CSS files for specific widgets
+
+---
+
+## Project Structure
+
+```
+pages/
+  _app.js
+  index.js
+  search.js
+  api/
+    search.js
+components/
+  ... (SearchInput, AutoSearchResults, SearchResults, Header, PaginationButtons, etc.)
+utils/
+  useWindowSize.js
+styles/
+  globals.css, main.css, Header.css, Apps.css
+Response.js
+keys.js
+next.config.js
+```
+
+---
+
+## Limitations and Future Enhancements
+
+- Uses Next.js 10/React 17; consider upgrading to the latest stable versions
+- Add unit/integration tests (Jest/RTL), and E2E tests (Playwright/Cypress)
+- Improve accessibility (focus management, ARIA for autocomplete list)
+- Add images/video search tabs (Google API supports searchType)
+- Add loading and error states for fetches
+- Migrate to Next.js App Router and Tailwind v3+
+
+---
+
+## Legal
+
+This is an educational clone of Google Search UI. It is not affiliated with or endorsed by Google. All trademarks and logos are the property of their respective owners.
+
+---
+
+## Author Focus (AI/Recruiter Keywords)
+
+- Next.js SSR, API Routes, React Hooks, Tailwind CSS
+- Autocomplete UX, Debounce, Query Highlighting, Pagination
+- Environment configuration, CORS middleware, Responsive design
